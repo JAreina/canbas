@@ -70,33 +70,60 @@
 const createCanvas= __webpack_require__(1);
 
 
-    function crear(){
-      let ctx = createCanvas(".canvas",300,300,"1px solid tomato");
+    function crear(idContainer,idCanvas, width, height, border,tagContainerCanvas,appendToContainer){
+      let ctx = createCanvas(idContainer,idCanvas, width, height, border,tagContainerCanvas,appendToContainer);
     }
-    window.load=crear();
+
+
+function init(){
+  crear("canvasContainer1","idCanvas1",300,300,"1px solid tomato","div","body");
+crear("canvasContainer2","idCanvas2",300,300,"1px solid tomato","div","body");
+}
+
+
+    window.load=init();
 
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const createContainer= __webpack_require__(2);
+
+"use strict"
+
+module.exports= function   createCanvas(idContainer,idCanvas, width, height, border,tagContainerCanvas,appendToContainer ) {
+       let canvas=undefined;
+       let ctx=undefined;
+       let container=undefined;
+
+
+
+       container = createContainer(idContainer,tagContainerCanvas,appendToContainer)
+
+       canvas = document.createElement("canvas");
+       canvas.setAttribute("id",idCanvas)
+       canvas.style.border = border;
+       canvas.width = width;
+       canvas.height = height;
+       container.appendChild(canvas);
+       if (canvas.getContext)
+         ctx = canvas.getContext("2d");
+
+       return ctx;
+     };
+
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports) {
 
-module.exports =  function createCanvas(selector, width, height, border ) {
-    let canvas=undefined;
-    let ctx=undefined;
-    let container=undefined;
+module.exports = function createContainer(id,tag,appendTo){
 
-    container = document.querySelector(selector);
-
-    canvas = document.createElement("canvas");
-    canvas.style.border = border;
-    canvas.width = width;
-    canvas.height = height;
-    container.appendChild(canvas);
-    if (canvas.getContext)
-      ctx = canvas.getContext("2d");
-
-    return ctx;
-  };
+  let containerCanvas = document.createElement(tag);
+        containerCanvas.setAttribute("id",id);
+  return document.querySelector(appendTo).appendChild(containerCanvas);
+}
 
 
 /***/ })

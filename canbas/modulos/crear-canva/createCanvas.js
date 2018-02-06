@@ -1,17 +1,24 @@
-module.exports =  function createCanvas(selector, width, height, border ) {
-    let canvas=undefined;
-    let ctx=undefined;
-    let container=undefined;
+const createContainer= require('./createContainer.js');
 
-    container = document.querySelector(selector);
+"use strict"
 
-    canvas = document.createElement("canvas");
-    canvas.style.border = border;
-    canvas.width = width;
-    canvas.height = height;
-    container.appendChild(canvas);
-    if (canvas.getContext)
-      ctx = canvas.getContext("2d");
+module.exports= function   createCanvas(idContainer,idCanvas, width, height, border,tagContainerCanvas,appendToContainer ) {
+       let canvas=undefined;
+       let ctx=undefined;
+       let container=undefined;
 
-    return ctx;
-  };
+
+
+       container = createContainer(idContainer,tagContainerCanvas,appendToContainer)
+
+       canvas = document.createElement("canvas");
+       canvas.setAttribute("id",idCanvas)
+       canvas.style.border = border;
+       canvas.width = width;
+       canvas.height = height;
+       container.appendChild(canvas);
+       if (canvas.getContext)
+         ctx = canvas.getContext("2d");
+
+       return ctx;
+     };
