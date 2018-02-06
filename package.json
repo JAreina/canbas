@@ -1,0 +1,21 @@
+{
+  "author": "JAreina",
+  "name": "servidor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "web-server.js",
+  "scripts": {
+    
+    "test": "nodemon web-server.js --open --port 9999",
+    "start":"node node_modules/.bin/webpack-dev-server"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
+  }
+}
