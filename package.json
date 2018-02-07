@@ -1,15 +1,15 @@
 {
   "author": "JAreina",
-  "name": "servidor",
+  "name": "canbas-canvas-lib",
   "version": "1.0.0",
-  "description": "",
+  "description": "Librería funciones canvas",
   "main": "web-server.js",
   "scripts": {
-    
+
     "test": "nodemon web-server.js --open --port 9999",
     "start":"node node_modules/.bin/webpack-dev-server"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.15.3"
   },
