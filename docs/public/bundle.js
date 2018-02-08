@@ -68,16 +68,23 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 const createCanvas = __webpack_require__(1);
+const createLine = __webpack_require__(3)
 
 
-function crear(idContainer, idCanvas, width, height, border, tagContainerCanvas, appendToContainer) {
-  let ctx = createCanvas(idContainer, idCanvas, width, height, border, tagContainerCanvas, appendToContainer);
-}
 
 
 function init() {
-  crear("canvasContainer1", "idCanvas1", 700, 300, "1px solid tomato", "div", "body");
-  crear("canvasContainer2", "idCanvas2", 350, 300, "1px solid tomato", "div", "body");
+  //crear primer canvas
+  let contexto = createCanvas("canvasContainer1", "idCanvas1", 700, 300, "1px solid tomato", "div", "body");
+
+  //CREAR OTRO CANVAS
+  let contexto2 = createCanvas("canvasContainer2", "idCanvas2", 350, 300, "1px solid tomato", "div", "body");
+
+  //DIBUJAR LÍNEAS
+
+  createLine(30, 30, 300, 30, 10, "tomato", "butt", contexto2)
+    createLine(30,80,300,80,20,"crimson","round", contexto2)
+      createLine(30,130,300,130,20,"teal","square", contexto2)
 }
 
 
@@ -118,11 +125,27 @@ module.exports = function createCanvas(idContainer, idCanvas, width, height, bor
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = function createContainer(id,tag,appendTo){
+module.exports = function createContainer(id, tag, appendTo) {
 
   let containerCanvas = document.createElement(tag);
-        containerCanvas.setAttribute("id",id);
+  containerCanvas.setAttribute("id", id);
   return document.querySelector(appendTo).appendChild(containerCanvas);
+}
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = function createLine(xstart, ystart, xend, yend, width, color, cap,ctx) {
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width
+  ctx.lineCap = cap;//BORDE DE LA LÍNEA
+  ctx.moveTo(xstart, ystart);
+  ctx.lineTo(xend, yend);
+  ctx.stroke();
+  ctx.closePath();
 }
 
 
