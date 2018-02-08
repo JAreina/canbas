@@ -5,7 +5,7 @@
   "description": "Librería funciones canvas",
   "main": "web-server.js",
   "scripts": {
-
+    
     "test": "nodemon web-server.js --open --port 9999",
     "start":"node node_modules/.bin/webpack-dev-server"
   },
