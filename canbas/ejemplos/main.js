@@ -1,6 +1,6 @@
 const createCanvas = require('../modulos/crear-canva/createCanvas.js');
 const createLine = require('../modulos/line/line.js')
-
+const horizontalLine = require('../modulos/line/horizontalLine.js')
 
 
 
@@ -14,8 +14,17 @@ function init() {
   //DIBUJAR LÍNEAS
 
   createLine(30, 30, 300, 30, 10, "tomato", "butt", contexto2)
-    createLine(30,80,300,80,20,"crimson","round", contexto2)
-      createLine(30,130,300,130,20,"teal","square", contexto2)
+  createLine(30, 80, 300, 80, 20, "crimson", "round", contexto2)
+  createLine(30, 130, 300, 130, 20, "teal", "square", contexto2)
+
+
+  //lineas horizontales
+  let contexto3 = createCanvas("canvasContainer3", "idCanvas3", 300, 300, "1px solid tomato", "div", "body");
+
+  //xstart, ystart, xend, yend, width,color,ctx,cap,newYStart,newYend,numDeLineas
+  horizontalLine(0, 5, 50, 5, 2, "tomato", contexto3,"", 30, 30,5)
+horizontalLine(50, 30, 150, 30, 2, "teal", contexto3,"", 30, 30,8)
+
 }
 
 

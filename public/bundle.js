@@ -60,16 +60,32 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+module.exports = function createLine(xstart, ystart, xend, yend, width, color, cap,ctx) {
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width
+  ctx.lineCap = cap;//BORDE DE LA LÍNEA
+  ctx.moveTo(xstart, ystart);
+  ctx.lineTo(xend, yend);
+  ctx.stroke();
+  ctx.closePath();
+}
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const createCanvas = __webpack_require__(1);
-const createLine = __webpack_require__(3)
-
+const createCanvas = __webpack_require__(2);
+const createLine = __webpack_require__(0)
+const horizontalLine = __webpack_require__(4)
 
 
 
@@ -83,8 +99,17 @@ function init() {
   //DIBUJAR LÍNEAS
 
   createLine(30, 30, 300, 30, 10, "tomato", "butt", contexto2)
-    createLine(30,80,300,80,20,"crimson","round", contexto2)
-      createLine(30,130,300,130,20,"teal","square", contexto2)
+  createLine(30, 80, 300, 80, 20, "crimson", "round", contexto2)
+  createLine(30, 130, 300, 130, 20, "teal", "square", contexto2)
+
+
+  //lineas horizontales
+  let contexto3 = createCanvas("canvasContainer1", "idCanvas1", 700, 300, "1px solid tomato", "div", "body");
+
+  //xstart, ystart, xend, yend, width, color,ctx,newYStart,newYend
+  horizontalLine(30, 30, 50, 50, 2, "tomato", contexto3, 3, 3)
+
+
 }
 
 
@@ -92,10 +117,10 @@ window.load = init();
 
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const createContainer = __webpack_require__(2);
+const createContainer = __webpack_require__(3);
 
 "use strict"
 
@@ -122,7 +147,7 @@ module.exports = function createCanvas(idContainer, idCanvas, width, height, bor
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports) {
 
 module.exports = function createContainer(id, tag, appendTo) {
@@ -134,18 +159,17 @@ module.exports = function createContainer(id, tag, appendTo) {
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = function createLine(xstart, ystart, xend, yend, width, color, cap,ctx) {
-  ctx.beginPath();
-  ctx.strokeStyle = color;
-  ctx.lineWidth = width
-  ctx.lineCap = cap;//BORDE DE LA LÍNEA
-  ctx.moveTo(xstart, ystart);
-  ctx.lineTo(xend, yend);
-  ctx.stroke();
-  ctx.closePath();
+const createLine = __webpack_require__(0);
+
+module.exports = function horizontalLine(xstart, ystart, xend, yend, width, color,ctx,newYStart,newYend) {
+  for (i = 1; i <= 10; i++) {
+    drawLine(xstart, ystart, xend, yend, width++, color,ctx);
+    ystart += newYStart; //change through y axis
+    yend += newYend;
+  }
 }
 
 
