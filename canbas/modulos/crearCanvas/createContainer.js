@@ -5,7 +5,7 @@
  * @param {string}  id del contenedor
  * @param {string} tag HTML del contenedor
  * @param {string} appendTo dónde se añade el elemento creado
- * @returns {element} el contenedor
+ * @returns {Object} el contenedor
  */
 module.exports = function createContainer(id, tag, appendTo) {
 

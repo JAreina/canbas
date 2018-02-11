@@ -10,7 +10,7 @@ const createContainer = require('./createContainer.js');
  * @param {string} border expresión css para el borde del canvas
  * @param {string} tagContainerCanvas etiqueta html del container del container
  * @param {string} appendToContainer elemento donde se añade el canvas
- * @returns {element} el contexto del canvas
+ * @returns {Object} el contexto del canvas
  */
 module.exports = function createCanvas(idContainer, idCanvas, width, height, border, tagContainerCanvas, appendToContainer) {
   let canvas = undefined;

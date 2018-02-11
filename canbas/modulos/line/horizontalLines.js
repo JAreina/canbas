@@ -8,7 +8,7 @@ const createLine = require('./line.js');
  * @param {number} width ancho de la línea
  * @param {string} color color de la línea
  * @param {string} cap  borde de la línea puede ser "butt",  "round",  "square"
- * @param {string} ctx contexto del canvas
+ * @param {Object} ctx contexto del canvas
   * @param {number} newYStart nuevo valor para el punto de comienzo de la nueva línea en el eje y
   * @param {number} newYEnd nuevo valor para el punto de fin de la nueva línea en el eje y
   * @param {number} numDeLineas número de líneas a dibujar

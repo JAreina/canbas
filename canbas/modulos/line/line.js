@@ -7,7 +7,7 @@
  * @param {number} width ancho de la línea
  * @param {string} color color de la línea
  * @param {string} cap  borde de la línea puede ser "butt",  "round",  "square"
- * @param {string} ctx contexto del canvas
+ * @param {Object} ctx contexto del canvas
  * @returns {void} no retorna nada
  */
 module.exports = function createLine(xstart, ystart, xend, yend, width, color, cap,ctx) {
