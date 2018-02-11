@@ -67,11 +67,23 @@
 /* 0 */
 /***/ (function(module, exports) {
 
+/**
+ * Esta función crea una simple línea
+ * @param {number}  xstart punto donde comienza en el eje x
+ * @param {number} ystart punto donde comienza en el eje y
+ * @param {number} xend punto donde termina en el eje x
+ * @param {number} yend punto donde termina en el eje y
+ * @param {number} width ancho de la línea
+ * @param {string} color color de la línea
+ * @param {string} cap  borde de la línea puede ser "butt",  "round",  "square"
+ * @param {string} ctx contexto del canvas
+ * @returns {void} no retorna nada
+ */
 module.exports = function createLine(xstart, ystart, xend, yend, width, color, cap,ctx) {
   ctx.beginPath();
   ctx.strokeStyle = color;
   ctx.lineWidth = width
-  ctx.lineCap = cap;//BORDE DE LA LÍNEA
+  ctx.lineCap = cap;
   ctx.moveTo(xstart, ystart);
   ctx.lineTo(xend, yend);
   ctx.stroke();
@@ -111,8 +123,8 @@ function init() {
   let contexto3 = createCanvas("canvasContainer3", "idCanvas3", 300, 300, "1px solid tomato", "div", "body");
 
   //xstart, ystart, xend, yend, width,color,ctx,cap,newYStart,newYend,numDeLineas
-  horizontalLines(0, 5, 50, 5, 2, "tomato", contexto3,"", 30, 30,5)
-horizontalLines(50, 30, 150, 30, 2, "teal", contexto3,"", 30, 30,8)
+  horizontalLines(0, 5, 50, 5, 2, "tomato", "",contexto3, 30, 30,5)
+horizontalLines(50, 30, 150, 30, 2, "teal","",contexto3, 30, 30,8)
 
 }
 
@@ -127,7 +139,17 @@ window.load = init();
 const createContainer = __webpack_require__(3);
 
 "use strict"
-
+/**
+ * Esta función crea el lienzo del canvas
+ * @param {string}  idContainer del contenedor
+ * @param {string} idCanvas id del canvas
+ * @param {number} width ancho del canvas
+ * @param {number} height altura del canvas
+ * @param {string} border expresión css para el borde del canvas
+ * @param {string} tagContainerCanvas etiqueta html del container del container
+ * @param {string} appendToContainer elemento donde se añade el canvas
+ * @returns {element} el contexto del canvas
+ */
 module.exports = function createCanvas(idContainer, idCanvas, width, height, border, tagContainerCanvas, appendToContainer) {
   let canvas = undefined;
   let ctx = undefined;
@@ -159,7 +181,7 @@ module.exports = function createCanvas(idContainer, idCanvas, width, height, bor
 /**
  * Esta función crea un contenedor
  * @param {string}  id del contenedor
- * @param {string} etiqueta HTML del contenedor
+ * @param {string} tag HTML del contenedor
  * @param {string} appendTo dónde se añade el elemento creado
  * @returns {element} el contenedor
  */
@@ -177,8 +199,22 @@ module.exports = function createContainer(id, tag, appendTo) {
 /***/ (function(module, exports, __webpack_require__) {
 
 const createLine = __webpack_require__(0);
-
-module.exports = function horizontalLine(xstart, ystart, xend, yend, width, color,ctx,cap,newYStart,newYend,numDeLineas) {
+/**
+ * Esta función crea varias líneas horizontales
+ * @param {number}  xstart punto donde comienza en el eje x
+ * @param {number} ystart punto donde comienza en el eje y
+ * @param {number} xend punto donde termina en el eje x
+ * @param {number} yend punto donde termina en el eje y
+ * @param {number} width ancho de la línea
+ * @param {string} color color de la línea
+ * @param {string} cap  borde de la línea puede ser "butt",  "round",  "square"
+ * @param {string} ctx contexto del canvas
+  * @param {number} newYStart nuevo valor para el punto de comienzo de la nueva línea en el eje y
+  * @param {number} newYEnd nuevo valor para el punto de fin de la nueva línea en el eje y
+  * @param {number} numDeLineas número de líneas a dibujar
+ * @returns {void} no retorna nada
+ */
+module.exports = function horizontalLine(xstart, ystart, xend, yend, width, color,cap,ctx,newYStart,newYend,numDeLineas) {
   for (i = 1; i <= numDeLineas; i++) {
     //xstart, ystart, xend, yend, width, color, cap,ctx
     createLine(xstart, ystart, xend, yend, width++, color,cap,ctx);

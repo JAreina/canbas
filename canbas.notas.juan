@@ -1,4 +1,5 @@
 https://github.com/documentationjs/documentation#documentation
 
 
-documentation build canbas/modulos/crearCanvas/**  -f html -o documentation
+documentation build canbas/modulos/**  -f html -o documentation
+documentation build canbas/modulos/**  -f html -o documentation
