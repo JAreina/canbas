@@ -156,11 +156,11 @@ module.exports = function createCanvas(idContainer, idCanvas, width, height, bor
 
 
 
-/*
- * Esta función crea un contenedor 
+/**
+ * Esta función crea un contenedor
  * @param {string}  id del contenedor
  * @param {string} etiqueta HTML del contenedor
- * @param {string} a dónde se añade el elemento creado
+ * @param {string} appendTo dónde se añade el elemento creado
  * @returns {element} el contenedor
  */
 module.exports = function createContainer(id, tag, appendTo) {

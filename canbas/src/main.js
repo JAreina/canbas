@@ -1,4 +1,4 @@
-const createCanvas = require('../modulos/crear-canva/createCanvas.js');
+const createCanvas = require('../modulos/crearCanvas/createCanvas.js');
 const createLine = require('../modulos/line/line.js')
 const horizontalLines = require('../modulos/line/horizontalLines.js')
 import './../src/canbas.css';
