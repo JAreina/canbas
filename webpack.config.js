@@ -1,9 +1,20 @@
 //  webpack.config.js
+
+
 module.exports = {
-    entry: './canbas/ejemplos/main.js',
-    output: {
-        filename: './public/bundle.js',
-        path: __dirname
-    },
-    devtool: "source-map"
+  entry: './canbas/src/main.js',
+  output: {
+    filename: './docs/bundle.js',
+    path: __dirname
+  },
+  devtool: "source-map",
+  module:{
+       rules:[
+           {
+               test:/\.css$/,
+               use:['style-loader','css-loader']
+           }
+      ]
+}
+
 };

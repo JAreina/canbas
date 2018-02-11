@@ -1,20 +1,22 @@
 {
   "author": "JAreina",
   "name": "canbas-canvas-lib",
+  "repository":"https://github.com/JAreina/canbas",
+  "homepage": " https://jareina.github.io/canbas/",
   "version": "1.0.0",
   "description": "Librería funciones canvas",
-  "main": "web-server.js",
+  "main": "",
   "scripts": {
-    
     "test": "nodemon web-server.js --open --port 9999",
-    "start":"node node_modules/.bin/webpack-dev-server"
+    "start": "node node_modules/.bin/webpack-dev-server"
   },
   "license": "MIT",
-  "dependencies": {
-    "express": "^4.15.3"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "css-loader": "^0.28.9",
+    "express": "^4.16.2",
     "nodemon": "^1.14.11",
+    "style-loader": "^0.20.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
   }
