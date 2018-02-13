@@ -76,7 +76,7 @@
  * @param {number} width ancho de la línea
  * @param {string} color color de la línea
  * @param {string} cap  borde de la línea puede ser "butt",  "round",  "square"
- * @param {string} ctx contexto del canvas
+ * @param {Object} ctx contexto del canvas
  * @returns {void} no retorna nada
  */
 module.exports = function createLine(xstart, ystart, xend, yend, width, color, cap,ctx) {
@@ -103,29 +103,45 @@ const createCanvas = __webpack_require__(2);
 const createLine = __webpack_require__(0)
 const horizontalLines = __webpack_require__(4)
 
-
+__webpack_require__(10)
 
 function init() {
-  //crear primer canvas
+  /**
+  CREAR UN CANVAS
+  **********************************************/
   let contexto = createCanvas("canvasContainer1", "idCanvas1", 700, 300, "1px solid tomato", "div", "body");
 
-  //CREAR OTRO CANVAS
+  /**
+  CREAR OTRO CANVAS
+  **********************************************/
   let contexto2 = createCanvas("canvasContainer2", "idCanvas2", 350, 300, "1px solid tomato", "div", "body");
 
-  //DIBUJAR LÍNEAS
+  /**
+  DIBUJAR LÍNEAS
+  **********************************************/
 
   createLine(30, 30, 300, 30, 10, "tomato", "butt", contexto2)
   createLine(30, 80, 300, 80, 20, "crimson", "round", contexto2)
   createLine(30, 130, 300, 130, 20, "teal", "square", contexto2)
 
+/**
+LINEAS HORIZONTALES
+**********************************************/
 
-  //lineas horizontales
   let contexto3 = createCanvas("canvasContainer3", "idCanvas3", 300, 300, "1px solid tomato", "div", "body");
 
   //xstart, ystart, xend, yend, width,color,ctx,cap,newYStart,newYend,numDeLineas
   horizontalLines(0, 5, 50, 5, 2, "tomato", "",contexto3, 30, 30,5)
 horizontalLines(50, 30, 150, 30, 2, "teal","",contexto3, 30, 30,8)
 
+/**
+LINEAS VERTICALES
+**********************************************/
+let contexto4 = createCanvas("canvasContainer4", "idCanvas4", 300, 300, "1px solid tomato", "div", "body");
+
+//xstart, ystart, xend, yend, width,color,ctx,cap,newYStart,newYend,numDeLineas
+verticalLines(0, 5, 50, 5, 2, "tomato", "",contexto4, 30, 30,5)
+verticalLines(50, 30, 150, 30, 2, "teal","",contexto4, 30, 30,8)
 }
 
 
@@ -148,7 +164,7 @@ const createContainer = __webpack_require__(3);
  * @param {string} border expresión css para el borde del canvas
  * @param {string} tagContainerCanvas etiqueta html del container del container
  * @param {string} appendToContainer elemento donde se añade el canvas
- * @returns {element} el contexto del canvas
+ * @returns {Object} el contexto del canvas
  */
 module.exports = function createCanvas(idContainer, idCanvas, width, height, border, tagContainerCanvas, appendToContainer) {
   let canvas = undefined;
@@ -183,7 +199,7 @@ module.exports = function createCanvas(idContainer, idCanvas, width, height, bor
  * @param {string}  id del contenedor
  * @param {string} tag HTML del contenedor
  * @param {string} appendTo dónde se añade el elemento creado
- * @returns {element} el contenedor
+ * @returns {Object} el contenedor
  */
 module.exports = function createContainer(id, tag, appendTo) {
 
@@ -208,13 +224,13 @@ const createLine = __webpack_require__(0);
  * @param {number} width ancho de la línea
  * @param {string} color color de la línea
  * @param {string} cap  borde de la línea puede ser "butt",  "round",  "square"
- * @param {string} ctx contexto del canvas
+ * @param {Object} ctx contexto del canvas
   * @param {number} newYStart nuevo valor para el punto de comienzo de la nueva línea en el eje y
   * @param {number} newYEnd nuevo valor para el punto de fin de la nueva línea en el eje y
   * @param {number} numDeLineas número de líneas a dibujar
  * @returns {void} no retorna nada
  */
-module.exports = function horizontalLine(xstart, ystart, xend, yend, width, color,cap,ctx,newYStart,newYend,numDeLineas) {
+module.exports = function horizontalLines(xstart, ystart, xend, yend, width, color,cap,ctx,newYStart,newYend,numDeLineas) {
   for (i = 1; i <= numDeLineas; i++) {
     //xstart, ystart, xend, yend, width, color, cap,ctx
     createLine(xstart, ystart, xend, yend, width++, color,cap,ctx);
@@ -283,7 +299,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "body{\n  background-color: rgb(53, 54, 53);\n}\n", ""]);
+exports.push([module.i, "body{\n  width:90%;\n  margin: 0 auto;\n  background-color: rgb(53, 54, 53);\n}\n", ""]);
 
 // exports
 
@@ -845,6 +861,36 @@ module.exports = function (css) {
 	// send back the fixed css
 	return fixedCss;
 };
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const createLine = __webpack_require__(0);
+/**
+ * Esta función crea varias líneas horizontales
+ * @param {number}  xstart punto donde comienza en el eje x
+ * @param {number} ystart punto donde comienza en el eje y
+ * @param {number} xend punto donde termina en el eje x
+ * @param {number} yend punto donde termina en el eje y
+ * @param {number} width ancho de la línea
+ * @param {string} color color de la línea
+ * @param {string} cap  borde de la línea puede ser "butt",  "round",  "square"
+ * @param {Object} ctx contexto del canvas
+  * @param {number} newXStart nuevo valor para el punto de comienzo de la nueva línea en el eje x
+  * @param {number} newXEnd nuevo valor para el punto de fin de la nueva línea en el eje x
+  * @param {number} numDeLineas número de líneas a dibujar
+ * @returns {void} no retorna nada
+ */
+module.exports = function verticalLines(xstart, ystart, xend, yend, width, color,cap,ctx,newXStart,newXend,numDeLineas) {
+  for (i = 1; i <= numDeLineas; i++) {
+    //xstart, ystart, xend, yend, width, color, cap,ctx
+    createLine(xstart, ystart, xend, yend, width++, color,cap,ctx);
+    xstart += newXStart; //change through y axis
+    xend += newXend;
+  }
+}
 
 
 /***/ })

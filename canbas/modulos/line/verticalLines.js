@@ -9,16 +9,16 @@ const createLine = require('./line.js');
  * @param {string} color color de la línea
  * @param {string} cap  borde de la línea puede ser "butt",  "round",  "square"
  * @param {Object} ctx contexto del canvas
-  * @param {number} newYStart nuevo valor para el punto de comienzo de la nueva línea en el eje y
-  * @param {number} newYEnd nuevo valor para el punto de fin de la nueva línea en el eje y
+  * @param {number} newXStart nuevo valor para el punto de comienzo de la nueva línea en el eje x
+  * @param {number} newXEnd nuevo valor para el punto de fin de la nueva línea en el eje x
   * @param {number} numDeLineas número de líneas a dibujar
  * @returns {void} no retorna nada
  */
-module.exports = function horizontalLines(xstart, ystart, xend, yend, width, color,cap,ctx,newYStart,newYend,numDeLineas) {
+module.exports = function verticalLines(xstart, ystart, xend, yend, width, color,cap,ctx,newXStart,newXend,numDeLineas) {
   for (i = 1; i <= numDeLineas; i++) {
     //xstart, ystart, xend, yend, width, color, cap,ctx
     createLine(xstart, ystart, xend, yend, width++, color,cap,ctx);
-    ystart += newYStart; //change through y axis
-    yend += newYend;
+    xstart += newXStart; //change through x axis
+    xend += newXend;
   }
 }
